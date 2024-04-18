@@ -1,7 +1,3 @@
-## Matzip Server
-
-> Inflearn, Kyo
-
 ## 실행
 
 1. 의존성 모듈 설치
