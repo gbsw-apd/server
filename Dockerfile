@@ -7,6 +7,9 @@ WORKDIR /app
 
 RUN npm i
 
+RUN mkdir -p /app/uploads
+COPY uploads/* /app/uploads/
+
 RUN npm run build
 
 # -- 라이브러리 다운 스테이지
@@ -24,6 +27,7 @@ FROM alpine AS runtime
 RUN apk add --no-cache nodejs
 
 COPY --from=build /app/dist /app/dist
+COPY --from=build /app/uploads /app/uploads
 COPY --from=dependency /app/node_modules /app/node_modules
 
 WORKDIR /app
